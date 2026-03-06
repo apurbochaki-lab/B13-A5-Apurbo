@@ -38,12 +38,68 @@
         </div>
     </nav>
 
-    <header class="shadow-md rounded-md bg-white mt-10 p-5 container mx-auto">
+    <header class="shadow-md rounded-md bg-white mt-10 p-6 container mx-auto">
         <!-- name of each tab group should be unique -->
-       <button onclick="tabActiveEffect('all-tab-btn')" id="all-tab-btn" class="btn px-8 bg-primary text-white">All</button>
-       <button onclick="tabActiveEffect('open-tab-btn')" id="open-tab-btn" class="btn px-8">Open</button>
-       <button onclick="tabActiveEffect('closed-tab-btn')" id="closed-tab-btn" class="btn px-8">Closed</button>
+        <button onclick="tabActiveEffect('all-tab-btn')" id="all-tab-btn"
+            class="btn px-8 bg-primary text-white">All</button>
+        <button onclick="tabActiveEffect('open-tab-btn')" id="open-tab-btn" class="btn px-8">Open</button>
+        <button onclick="tabActiveEffect('closed-tab-btn')" id="closed-tab-btn" class="btn px-8">Closed</button>
     </header>
+
+    <main class="mt-8 container mx-auto">
+        <section class="bg-white shadow-md p-6 rounded-md flex justify-between items-center">
+
+            <div class="left-div flex items-center gap-3">
+                <div class="bg-[#ECE4FF] p-2 rounded-full">
+                    <img src="./assets/Aperture.png" alt="">
+                </div>
+                <div>
+                    <h2 class="text-xl font-bold"><span id="total-count">0</span> Issues</h2>
+                    <p class="text-[#64748B]">Track and manage your project issues</p>
+                </div>
+            </div>
+
+            <div class="right-div flex items-center gap-4">
+                <div class="flex items-center gap-2">
+                    <div class="bg-green-500 h-3 w-3 rounded-full"></div>
+                    <p class="font-medium">Open</p>
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <div class="bg-purple-500 h-3 w-3 rounded-full"></div>
+                    <p class="font-medium">Closed</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="cards-container" class="bg-[#FBFBFB] p-5 shadow-sm mt-1 grid grid-cols-4 gap-5">
+            <!-- border-t-4 border-t-green-500 -->
+
+            <!-- <div class="card bg-white shadow-sm p-5">
+
+                <div class="flex justify-between items-center">
+                    <img class="w-8" src="./assets/Open-Status.png" alt="">
+                    <h2 id="priority" class="badge badge-outline font-semibold">High</h2>
+                </div>
+                <div class="mt-5 space-y-3 border-b-1 border-b-gray-300 pb-4">
+                    <h2 class="text-xl font-semibold">Fix navigation menu on mobile devices</h2>
+                    <p class="text-[#64748B] text-[14px]">The navigation menu doesn't collapse properly on mobile devices...</p>
+                    <div class="flex gap-4">
+                        <h2 class="badge bg-neutral text-white p-4 rounded-full text-[12px] font-medium"><i class="fa-solid fa-bug"></i> BUG
+                        </h2>
+                        <h2 class="badge bg-neutral text-white p-4 rounded-full text-[12px] font-medium"><i
+                        class="fa-solid fa-hand-holding-hand"></i> HELP WANTED</h2>
+                    </div>
+                </div>
+                <div class="mt-5 space-y-2"> 
+                    <p class="text-[#64748B]">#1 by john_doe</p>
+                    <p class="text-[#64748B]">1/15/2024</p>
+                </div>
+
+            </div> -->
+
+        </section>
+    </main>
 
 
     <script src="./scripts/home.js"></script>
