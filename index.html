@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Github Issue Tracker</title>
+
+    <!-- DaisyUI + TailWind -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <!-- <section class="min-h-screen flex items-center justify-center bg-base-200 p-6">
+
+        <div class="max-w-md w-full bg-white shadow-xl rounded-xl p-8">
+            
+            <div class="text-center space-y-5">
+                <img class="mx-auto" src="./assets/github-logo.png" alt="">
+                <div>
+                    <h2 class="font-bold text-xl">GitHub Issues Tracker</h2>
+                    <p class="text-[#64748B]">Sign in to manage your issues</p>
+                </div>
+            </div>
+
+            
+            <div class="card bg-base-100 w-full max-w-md border">
+                <div class="card-body">
+                    <fieldset class="fieldset">
+                        <label class="label">Email</label>
+                        <input type="email" class="input w-full" placeholder="Email" />
+                        <label class="label">Password</label>
+                        <input type="password" class="input w-full" placeholder="Password" />
+                        <div><a class="link link-hover">Forgot password?</a></div>
+                        <button class="btn btn-neutral mt-4 w-full">Login</button>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <section class="min-h-screen flex items-center justify-center bg-base-200 p-6">
+
+        <div class="max-w-md w-full bg-white shadow-xl rounded-xl p-8">
+
+            <!-- Header -->
+            <div class="text-center space-y-4">
+                <img class="mx-auto" src="./assets/github-logo.png" alt="github logo">
+
+                <div>
+                    <h2 class="text-xl font-bold">GitHub Issues Tracker</h2>
+                    <p class="text-gray-500 text-sm">Sign in to manage your issues</p>
+                </div>
+            </div>
+
+            <!-- Form -->
+            <div class="mt-8 space-y-4">
+
+                <div>
+                    <label class="label">
+                        <span class="label-text text-black font-medium">Username</span>
+                    </label>
+                    <input id="input-user" value="admin" type="email" placeholder="Enter Username" class="input input-bordered w-full">
+                </div>
+
+                <div>
+                    <label class="label">
+                        <span class="label-text text-black font-medium">Password</span>
+                    </label>
+                    <input id="input-pass" type="password" placeholder="Enter Password" class="input input-bordered w-full">
+                </div>
+
+                <button id="signIn-btn" class="btn btn-primary w-full mt-2">Sign In</button>
+
+            </div>
+
+            <!-- Bottom Content -->
+            <div class="divider">OR</div>
+            <p class="text-[#64748B] text-center text-[14px] mb-3">Demo Credentials:</p>
+            <div class="text-center bg-base-200 p-5 rounded-md">
+                <h4><span class="font-bold">Username:</span> admin</h4>
+                <h4><span class="font-bold">Password:</span> admin123</h4>
+            </div>
+        </div>
+
+    </section>
+
+
+    <script src="./scripts/login.js"></script>
+</body>
+
+</html>
