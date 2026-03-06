@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 
-<body>
+<body class="bg-[#F8FAFC]">
     <nav class="bg-base-100 shadow-sm">
         <div class="navbar flex justify-between items-center  container mx-auto">
             <div class="flex items-center gap-2">
@@ -37,6 +37,16 @@
             </div>
         </div>
     </nav>
+
+    <header class="shadow-md rounded-md bg-white mt-10 p-5 container mx-auto">
+        <!-- name of each tab group should be unique -->
+       <button onclick="tabActiveEffect('all-tab-btn')" id="all-tab-btn" class="btn px-8 bg-primary text-white">All</button>
+       <button onclick="tabActiveEffect('open-tab-btn')" id="open-tab-btn" class="btn px-8">Open</button>
+       <button onclick="tabActiveEffect('closed-tab-btn')" id="closed-tab-btn" class="btn px-8">Closed</button>
+    </header>
+
+
+    <script src="./scripts/home.js"></script>
 </body>
 
 </html>
