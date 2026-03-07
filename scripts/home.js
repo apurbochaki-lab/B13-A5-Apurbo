@@ -113,8 +113,8 @@ function displayAllData(allData) {
         manageLoading(false)
     });
 
-    console.log(openList)
-    console.log(closeList)
+    // console.log(openList)
+    // console.log(closeList)
 
     // console.log(total)
     totalCount.innerText = total;
@@ -196,5 +196,18 @@ closedTabBtn.addEventListener("click", function() {
 })
 
 
+// Search feature
+async function searchMe() {
+    const searchInput = document.getElementById("search-input");
+    let searchValue = searchInput.value.trim().toLowerCase();
+    console.log(searchValue)
+
+    const res = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchValue}`)
+    const data = await res.json();
+    const apiData = data.data;
+    // console.log(apiData)
+    displayAllData(apiData)
+    searchInput.value = ""    
+}
 
 
