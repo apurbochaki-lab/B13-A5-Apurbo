@@ -149,7 +149,7 @@ function displayAllData(allData) {
                     <h2 onclick="openModal(${details.id})" class="text-xl font-semibold cursor-pointer">${details.title}</h2>
                     <p onclick="openModal(${details.id})" class="text-[#64748B] text-[14px] line-clamp-2">${details.description}}</p>
 
-                    <div class="badge-container flex gap-4">
+                    <div class="badge-container flex flex-wrap md:flex-row gap-4">
                        ${createHtmlElement(details.labels)}
                     </div>
 
@@ -215,9 +215,10 @@ const displayModal = (apiData) => {
 
     const modalContainer = document.getElementById("modal-container");
     modalContainer.innerHTML = "";
+
     modalContainer.innerHTML = ` <div class="space-y-4 p-5">
                         <h2 class="text-2xl font-bold">${apiData.title}</h2>
-                        <div class="flex items-center gap-3">
+                        <div class="flex flex-wrap items-center gap-3">
 
                             <span class="badge ${bgColor} text-white font-semibold p-4 rounded-full">${apiData.status}</span>
                             <span class="bg-gray-500 h-1.5 w-1.5 rounded-full"></span>

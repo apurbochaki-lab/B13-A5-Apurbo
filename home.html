@@ -21,7 +21,7 @@
 
 <body class="bg-[#F8FAFC]">
     <nav class="bg-base-100 shadow-md sticky top-0 z-10">
-        <div class="navbar flex justify-between items-center container mx-auto">
+        <div class="navbar container mx-auto flex flex-wrap space-y-5 justify-between items-center md:space-y-0">
             <div class="flex items-center gap-2">
                 <img class="w-10" src="./assets/github-logo.png" alt="">
                 <a href="./index.html" class="text-2xl font-semibold">GitHub Issues Tracker</a>
@@ -30,7 +30,7 @@
             <div class="join">
                 <div>
                     <label class="input validator join-item">
-                        <input id="search-input" type="text" placeholder="Search here" />
+                        <input id="search-input" type="search" placeholder="Search here" />
                     </label>
                 </div>
                 <button onclick="searchMe()" id="search-btn" class="btn btn-primary join-item">Search</button>
@@ -38,7 +38,7 @@
         </div>
     </nav>
 
-    <header class="shadow-md rounded-md bg-white mt-10 p-6 container mx-auto">
+    <header class="shadow-md rounded-md bg-white mt-10 p-6 container mx-auto flex flex-wrap gap-4">
         <!-- name of each tab group should be unique -->
         <button onclick="tabActiveEffect('all-tab-btn')" id="all-tab-btn"
             class="btn px-8 bg-primary text-white">All</button>
@@ -47,7 +47,7 @@
     </header>
 
     <main class="mt-8 container mx-auto">
-        <section class="bg-white shadow-md p-6 rounded-md flex justify-between items-center">
+        <section class="bg-white shadow-md p-6 rounded-md flex space-y-4 flex-wrap justify-between items-center md:space-y-0">
 
             <div class="left-div flex items-center gap-3">
                 <div class="bg-[#ECE4FF] p-2 rounded-full">
@@ -72,7 +72,7 @@
             </div>
         </section>
 
-        <section id="cards-container" class="bg-[#FBFBFB] p-5 shadow-sm mt-1 grid grid-cols-4 gap-5">
+        <section id="cards-container" class="bg-[#FBFBFB] p-5 shadow-sm mt-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
             <!-- border-t-4 border-t-green-500 -->
 
         <!-- <div class="card bg-white shadow-sm p-5">
