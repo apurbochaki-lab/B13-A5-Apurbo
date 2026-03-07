@@ -7,7 +7,7 @@ let closeList = [];
 
 // Function for Tab Buttons Active Effect
 function tabActiveEffect(id) {
-    console.log("Clicked -->", id)
+    // console.log("Clicked -->", id)
     // Remove first
     allTabBtn.classList.remove("bg-primary", "text-white");
     openTabBtn.classList.remove("bg-primary", "text-white");
@@ -44,7 +44,6 @@ const createHtmlElement = (arr) => {
 // All Cards Fetching
 async function loadAllCards() {
     manageLoading(true)
-
     const res = await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues");
     const data = await res.json();
     // const allData = data.data;
@@ -54,6 +53,7 @@ async function loadAllCards() {
 function displayAllData(allData) {
     const cardsContainer = document.getElementById("cards-container");
     cardsContainer.innerHTML = "";
+
     const totalCount = document.getElementById("total-count");
     let total = 0;
 
@@ -66,16 +66,29 @@ function displayAllData(allData) {
 
         // Conditional Styling
         const status = details.status;
-        let imgSrc = "./assets/Open-Status.png"
+        let imgSrc = ""
 
         if (status == 'open') {
             card.classList.add("border-t-4", "border-t-green-500")
             imgSrc = "./assets/Open-Status.png"
 
+            // No duplicate data 
+            const dataExist = openList.find(item => item.id == details.id)
+            if (!dataExist) {
+                openList.push(details)
+            }
+
         }
         if (status == 'closed') {
             card.classList.add("border-t-4", "border-t-purple-500")
             imgSrc = "./assets/Closed-Status.png"
+
+            // No duplicate data 
+            const dataExist = closeList.find(item => item.id == details.id)
+            if (!dataExist) {
+                closeList.push(details)
+            }
+          
         }
 
         card.innerHTML = `<div class="flex justify-between items-center">
@@ -96,13 +109,16 @@ function displayAllData(allData) {
                     <p class="text-[#64748B]">${new Date(details.createdAt).toLocaleDateString("en-US")}</p>
                 </div>`;
 
-        cardsContainer.appendChild(card);
+        cardsContainer.appendChild(card);     
         manageLoading(false)
+    });
 
-    })
+    console.log(openList)
+    console.log(closeList)
+
     // console.log(total)
     totalCount.innerText = total;
-}
+};
 
 loadAllCards()
 
@@ -167,8 +183,17 @@ const setModal = (apiData) => {
 }
 
 
-
-
+// Tab Button Switch function
+allTabBtn.addEventListener("click", function() {
+    loadAllCards()
+})
+openTabBtn.addEventListener("click", function(){
+    // console.log("Clicked")
+    displayAllData(openList)
+})
+closedTabBtn.addEventListener("click", function() {
+    displayAllData(closeList)
+})
 
 
 
