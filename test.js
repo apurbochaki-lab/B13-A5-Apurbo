@@ -1,8 +1,8 @@
 // Expected formate : 1/15/2024
 
 const date = '2024-01-15T10:30:00Z';
-// const d = new Date(date);
-// const format = d.toLocaleDateString("en-US")
+const d = new Date(date);
+const format = d.toLocaleDateString("en-US")
 // console.log(format)
 
 // const d = new Date(date).toLocaleDateString("en-US")
@@ -17,6 +17,7 @@ const labels = ['bug', 'help wanted'];
 
 const createHtmlElement = (arr) => {
     // const element = arr.map(ele => `<h2 class="badge">${ele}</h2>`)
+
     const htmlElement = arr.map(ele => `<h2 class="badge bg-neutral text-white p-4 rounded-full text-[12px] font-medium"><i class="fa-solid fa-bug"></i>${ele.toUpperCase()}</h2>`)
     // console.log(htmlElement.join(" "))
 }
@@ -160,11 +161,6 @@ function displayAllData(allData) {
 // name convert
 const name = "jhon_doe"
 // Expected Jhon Doe
-
-// console.log(`${name
-//     .split("_")
-//     .map(word => word[0].toUpperCase() + word.slice(1)).join(" ")
-// }`)
 
 // console.log(
 //   `${name

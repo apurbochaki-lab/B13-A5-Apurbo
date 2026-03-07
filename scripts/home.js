@@ -127,13 +127,27 @@ function displayAllData(allData) {
 
         }
 
+        // Card Priority Styles
+        const priority = details.priority;
+        let priorityStyle = ""
+
+        if (priority == 'high') {
+            priorityStyle = "bg-red-100 text-red-600"
+        }
+        if (priority == 'medium') {
+            priorityStyle = "bg-yellow-200 text-orange-600"
+        }
+        if (priority == 'low') {
+            priorityStyle = "bg-gray-200 text-gray-600"
+        }
+
         card.innerHTML = `<div class="flex justify-between items-center">
                     <img class="w-8" src="${imgSrc}" alt="">
-                    <h2 class="badge badge-outline font-semibold">${details.priority.toUpperCase()}</h2>
+                    <h2 class="badge ${priorityStyle} px-5 py-3 rounded-full font-medium">${details.priority.toUpperCase()}</h2>
                 </div>
                 <div class="mt-5 space-y-3 border-b-1 border-b-gray-300 pb-4">
                     <h2 onclick="openModal(${details.id})" class="text-xl font-semibold cursor-pointer">${details.title}</h2>
-                    <p class="text-[#64748B] text-[14px] line-clamp-2">${details.description}}</p>
+                    <p onclick="openModal(${details.id})" class="text-[#64748B] text-[14px] line-clamp-2">${details.description}}</p>
 
                     <div class="badge-container flex gap-4">
                        ${createHtmlElement(details.labels)}
@@ -176,13 +190,27 @@ const displayModal = (apiData) => {
 
     // Conditional Card Styling
     const status = apiData.status;
-    let bgColor = "bg-green-600";
+    let bgColor = "";
 
     if (status == 'open') {
         bgColor = "bg-green-600"
     }
     if (status == 'closed') {
         bgColor = "bg-red-600"
+    }
+
+    // Modal Priority Styles
+    const priority = apiData.priority;
+    let priorityStyle = ""
+
+    if (priority == 'high') {
+        priorityStyle = "bg-red-500 text-white"
+    }
+    if (priority == 'medium') {
+        priorityStyle = "bg-yellow-300 text-orange-700"
+    }
+    if (priority == 'low') {
+        priorityStyle = "bg-gray-200 text-gray-600"
     }
 
     const modalContainer = document.getElementById("modal-container");
@@ -203,7 +231,7 @@ const displayModal = (apiData) => {
                              ${createHtmlElement(apiData.labels)}
                         </div>
                         <p class="text-[#64748B]">${apiData.description}</p>
-                        <div class="bg-slate-50 rounded-md p-5 flex justify-between">
+                        <div class="bg-slate-50 rounded-md p-5 flex justify-between text-center">
                             <div class="left-content">
                                 <h2 class="text-[#64748B]">Assignee:</h2>
                                 <h2 style="text-transform:capitalize" class="text-md font-semibold">${apiData.assignee ? apiData.assignee.split("_").join(" ") : "No Assignee Found!"}</h2>
@@ -211,7 +239,7 @@ const displayModal = (apiData) => {
 
                             <div class="right-content">
                                 <h2 class="text-[#64748B]">Priority:</h2>
-                                <span class="badge bg-neutral text-white p-4 rounded-full font-semibold">${apiData.priority.toUpperCase()}</span>
+                                <span class="badge ${priorityStyle} p-4 rounded-full font-semibold">${apiData.priority.toUpperCase()}</span>
                             </div>
                         </div>
                     </div>`
