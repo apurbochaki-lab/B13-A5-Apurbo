@@ -53,6 +53,7 @@ async function loadAllCards() {
 
 function displayAllData(allData) {
     const cardsContainer = document.getElementById("cards-container");
+    cardsContainer.innerHTML = "";
     const totalCount = document.getElementById("total-count");
     let total = 0;
 
@@ -82,7 +83,7 @@ function displayAllData(allData) {
                     <h2 id="priority" class="badge badge-outline font-semibold">${details.priority}</h2>
                 </div>
                 <div class="mt-5 space-y-3 border-b-1 border-b-gray-300 pb-4">
-                    <h2 class="text-xl font-semibold">${details.title}</h2>
+                    <h2 onclick="openModal(${details.id})" class="text-xl font-semibold cursor-pointer">${details.title}</h2>
                     <p class="text-[#64748B] text-[14px] line-clamp-2">${details.description}}</p>
 
                     <div class="badge-container flex gap-4">
@@ -104,6 +105,68 @@ function displayAllData(allData) {
 }
 
 loadAllCards()
+
+
+// Open Modal Function
+const mainModal = document.getElementById("main-modal");
+
+const openModal = (id) => {
+    console.log(id)
+
+   const url = `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`
+   fetch(url)
+   .then(res => res.json())
+   .then(data => setModal(data.data))
+
+}
+
+const setModal = (apiData) => {
+
+    // Conditional Card Styling
+    const status = apiData.status;
+    let bgColor = "bg-green-600";
+
+    if(status == 'open') {
+        bgColor = "bg-green-600"
+    }
+    if (status == 'closed') {
+        bgColor = "bg-red-600"
+    }
+
+    const modalContainer = document.getElementById("modal-container");
+    modalContainer.innerHTML = "";
+    modalContainer.innerHTML = ` <div class="space-y-4 p-5">
+                        <h2 class="text-2xl font-bold">${apiData.title}</h2>
+                        <div class="flex items-center gap-5">
+
+                            <span class="badge ${bgColor} text-white font-semibold p-4 rounded-full">${apiData.status}</span>
+
+                            <span class="text-[#64748B]">Opened By ${apiData.author}</span>
+                            <span class="text-[#64748B]">${new Date(apiData.updatedAt).toLocaleDateString("en-US")}</span>
+                        </div>
+                        <div class="badge-container flex gap-4">                           
+                             ${createHtmlElement(apiData.labels)}
+                        </div>
+                        <p class="text-[#64748B]">${apiData.description}</p>
+                        <div class="bg-slate-50 rounded-md p-5 flex justify-between">
+                            <div class="left-content">
+                                <h2 class="text-[#64748B]">Assignee:</h2>
+                                <h2 class="text-md font-semibold">${apiData.assignee? apiData.assignee : "No Assignee Found!"}</h2>
+                            </div>
+
+                            <div class="right-content">
+                                <h2 class="text-[#64748B]">Priority:</h2>
+                                <span class="badge bg-neutral text-white p-4 rounded-full font-semibold">${apiData.priority.toUpperCase()}</span>
+                            </div>
+                        </div>
+                    </div>`
+    
+
+
+    mainModal.showModal()
+}
+
+
 
 
 
