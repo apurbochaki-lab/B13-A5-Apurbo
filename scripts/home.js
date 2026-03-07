@@ -2,6 +2,9 @@ const allTabBtn = document.getElementById("all-tab-btn");
 const openTabBtn = document.getElementById("open-tab-btn");
 const closedTabBtn = document.getElementById("closed-tab-btn");
 
+let openList = [];
+let closeList = [];
+
 // Function for Tab Buttons Active Effect
 function tabActiveEffect(id) {
     console.log("Clicked -->", id)
@@ -15,33 +18,67 @@ function tabActiveEffect(id) {
 
 };
 
+// Mange Loading Spinner
+function manageLoading(status) {
+    const loadingSpinner = document.getElementById("loading-spinner");
+    const cardsContainer = document.getElementById("cards-container");
+
+    if (status == true) {
+        loadingSpinner.classList.remove("hidden");
+        cardsContainer.classList.add("hidden");
+    }
+    if (status == false) {
+        loadingSpinner.classList.add("hidden");
+        cardsContainer.classList.remove("hidden");
+    }
+}
+
+// Function for innerHTML badge part
+const createHtmlElement = (arr) => {
+    const htmlElement = arr.map(ele => `<h2 class="badge bg-neutral text-white p-4 rounded-full text-[12px] font-medium"><i class="fa-solid fa-bug"></i>${ele.toUpperCase()}</h2>`)
+    return (htmlElement.join(" "));
+}
+
+
+
 // All Cards Fetching
 async function loadAllCards() {
+    manageLoading(true)
+
     const res = await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues");
     const data = await res.json();
-    const allData = data.data;
+    // const allData = data.data;
+    displayAllData(data.data);
+}
 
+function displayAllData(allData) {
     const cardsContainer = document.getElementById("cards-container");
     const totalCount = document.getElementById("total-count");
     let total = 0;
 
     allData.forEach(details => {
         total += 1;
-        // console.log(details);
+        // console.log(details.status);
 
         const card = document.createElement("div");
         card.className = "card bg-white shadow-md p-5";
 
-        // Labels to Badge
-        let badges = "";
-        for (const label of details.labels) {
-            // badges = badges + `<h2>${label}</h2>`;
-            badges += `<h2 class="badge bg-neutral text-white p-4 rounded-full text-[12px] font-medium">${label.toUpperCase()}</h2>`;
-            console.log(badges)
-        };
+        // Conditional Styling
+        const status = details.status;
+        let imgSrc = "./assets/Open-Status.png"
+
+        if (status == 'open') {
+            card.classList.add("border-t-4", "border-t-green-500")
+            imgSrc = "./assets/Open-Status.png"
+
+        }
+        if (status == 'closed') {
+            card.classList.add("border-t-4", "border-t-purple-500")
+            imgSrc = "./assets/Closed-Status.png"
+        }
 
         card.innerHTML = `<div class="flex justify-between items-center">
-                    <img class="w-8" src="./assets/Open-Status.png" alt="">
+                    <img class="w-8" src="${imgSrc}" alt="">
                     <h2 id="priority" class="badge badge-outline font-semibold">${details.priority}</h2>
                 </div>
                 <div class="mt-5 space-y-3 border-b-1 border-b-gray-300 pb-4">
@@ -49,7 +86,7 @@ async function loadAllCards() {
                     <p class="text-[#64748B] text-[14px] line-clamp-2">${details.description}}</p>
 
                     <div class="badge-container flex gap-4">
-                       ${badges}
+                       ${createHtmlElement(details.labels)}
                     </div>
 
                 </div>
@@ -59,29 +96,17 @@ async function loadAllCards() {
                 </div>`;
 
         cardsContainer.appendChild(card);
-        
-    })
-    // badgeUpdater()
-    console.log(total)
-    totalCount.innerText = total;
+        manageLoading(false)
 
+    })
+    // console.log(total)
+    totalCount.innerText = total;
 }
 
-// async function badgeUpdater() {
-//     const badgeContainer = document.getElementById("badge-container");
-//     console.log(badgeContainer)
-
-//     const res = await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues");
-//     const data = await res.json();
-//     const allData = data.data
-//     // console.log(allData)
-
-//     for (const label of allData) {
-//         const labelData = label.labels;
-//         console.log(labelData[])
-
-//     }
-
-// }
-
 loadAllCards()
+
+
+
+
+
+
