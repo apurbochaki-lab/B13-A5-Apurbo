@@ -161,10 +161,10 @@ function displayAllData(allData) {
 const name = "jhon_doe"
 // Expected Jhon Doe
 
-console.log(`${name
-    .split("_")
-    .map(word => word[0].toUpperCase() + word.slice(1)).join(" ")
-}`)
+// console.log(`${name
+//     .split("_")
+//     .map(word => word[0].toUpperCase() + word.slice(1)).join(" ")
+// }`)
 
 // console.log(
 //   `${name
@@ -175,4 +175,5 @@ console.log(`${name
 
 
 
-
+const nameConvert = name.split("_").join(" ")
+console.log(nameConvert)
