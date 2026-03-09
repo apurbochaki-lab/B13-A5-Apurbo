@@ -228,7 +228,7 @@ const displayModal = (apiData) => {
 
                             <span class="text-[#64748B]">${new Date(apiData.createdAt).toLocaleDateString("en-US")}</span>
                         </div>
-                        <div class="badge-container flex gap-4">                           
+                        <div class="badge-container flex flex-wrap gap-4">                   
                              ${createHtmlElement(apiData.labels)}
                         </div>
                         <p class="text-[#64748B]">${apiData.description}</p>
