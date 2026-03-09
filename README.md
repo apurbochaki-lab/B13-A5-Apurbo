@@ -1,129 +1,56 @@
-# 🌟 Welcome To (সহজ সরল সিম্পল) Assignment - 5
+<!-- NOTE : I'm not best in english. So, ignore my grammatical errors -->
 
-# **📅 Deadline For 60 marks:** 9th March, 2026 (11:59 pm ⏱️)  
-#  📅 No Deadline For 50 marks  
-# **📅 Deadline For 30 marks:** Any time after 9th March.
+<!-- 1️⃣ What is the difference between var, let, and const? -->
+In JavaScript, var, let & const all are stands for variables declaration. But they have different behavior in scope, reassignment, redeclare and hoisting.
 
----
+# var (Old method)
+This is function scoped based, not block scoped. It ignores blocks like {}, if, for etc.
+Can be reassigned and also be redeclared. Hoisted in the top and initialized as undefined. That's why it causes bugs. So, we'll always avoid to use var.
 
-# Assignment-05: GitHub Issues Tracker
+# let (modern method)
+This is a block scoped. It follows and respect {}, for, if etc. Can be reassigned but not be redeclared in same a scope. Hoisted but not initialized. It's exist in temporal dead zone TDZ.
 
-
-### **API Endpoints:**
-###  **All Issues:** 
-  - https://phi-lab-server.vercel.app/api/v1/lab/issues 
-
-
-###  **Single Issue:**
-   - https://phi-lab-server.vercel.app/api/v1/lab/issue/{id}
-
-   - Example: https://phi-lab-server.vercel.app/api/v1/lab/issue/33
+# const (modern method)
+This is also a block scoped. It follows {}, if, for, function {} etc. Can't be reassigned and can't be redeclared.
+Histed but not initialized but exist in TDZ.
 
 
-###  **Search Issue:** https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q={searchText}
 
-   - Example:  https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=notifications
-
-
----
-
-## 📝 Main Requirements
-
-## 🎨 Design Part
-
-## Login Page
-- Create a login page containing a logo, title, and sub-title
-- Below that, there will be 2 inputs, a sign-in button, and a demo credential to sign in. Follow the Figma for this page 
-- Styled as per Figma
-
-## Main Page: 
-
-### Navbar: 
-
-- Navbar with website logo/name on the left
-- Search input and button on the right
-
-### Tab Section like Figma: 
-
-- 3 tab ( All, Open, Closed) at the top of this section.(**All**, **Open**, **Closed**)
-
-- Below the tab, there will be an icon, the issue count, some text on the left, and an open and closed marker on the right
-
-- Responsiveness: The website should be responsive for mobile devices. It is totally up to you. 
+<!-- 2️⃣ What is the spread operator (...)? -->
+The spread operator is a syntax, that can spread means separate values as differently from array, object or from iterable data. This operator is commonly used to copy or clone any array or object data. Without spread operator(...), it will only take values/data as a reference only. If the reference data changed then the main array or object will also changed. It's also used to merge two or more array and objects.
 
 
---- 
+
+<!-- 3️⃣ What is the difference between map(), filter(), and forEach()? -->
+Map, filter, forEach both are used to loop on arrays. But those main difference are return value and use case.
+
+# map()
+It's work with all elements of a array. It returns values with a new array. Don't change original array. It's calculate all the single value by looping and returns in a new array. I's commonly used to UI rendering by literal template.
+
+# filter()
+It's return elements by checking condition. If condition comes true then, it's return new array with those values who fall under the condition. It can return multiple values in a array. It's also can be used in array of objects.
+
+# forEach()
+It's only for array looping. It's don't return any new array. And it's a shorter syntax rather than for loop. And it used arrow function also. Commonly used for API call, Dom manipulation etc.
 
 
-## ⚙️ Functionalities
-- In login page, there will be default admin credentials (username, password). You need to sign in using these credentials.
 
-- Load all issues and display as per Figma
+<!-- 4️⃣ What is an arrow function? -->
+It's a syntax of ES6 for writing functions shorter. It convert a normal function to shorter, cleaner and more readable. 
 
-- On clicking on an open or closed tab, it will load the issues data of the related tab and show it in a display-like card in a 4-column layout like Figma. By default, it will show all data 
+Ex : Normal Function
+function add(a, b) {
+  return a + b;
+}
 
-- Each card shows:
-  - Title
-  - Description
-  - Status
-  - Category
-  - Author
-  - Priority
-  - Label
-  - CreatedAt
-- Clicking on a tree name in a card will open a modal and show all the information about that Issue. 
+Ex : Arrow Function
+const add = (a, b) => a + b;
 
-### 🚀 Challenges
+In arrow function, If there is only one parameter then the () is optional. If there are multiple parameters then must have to use (). And if there need to code multiple line then, must need a block {}.
 
 
-- Show the card Top border based on their category(open, closed), open card will have Green Boder, closed card will have a purple border on top. 
 
-- Loading spinner on data load
-
-- Show active button on changing category names
-
-- Implement Search Functionality and 8 meaningful github commit.  
-
-- Create a readme file and answer this question on your own. Don’t copy-paste from Google or any AI chatbot. 
-    - 1️⃣ What is the difference between var, let, and const?
-    - 2️⃣ What is the spread operator (...)?
-    - 3️⃣ What is the difference between map(), filter(), and forEach()?
-    - 4️⃣ What is an arrow function?
-    - 5️⃣ What are template literals?
-
-
----
-
-## 🛠️ Technology Stack
-
-- **HTML**
-- **CSS** (Vanilla/Tailwind/DaisyUI)
-- **JavaScript** (Vanilla)
-
----
-
-## 🔑 Demo Credentials
-
-```text
-Username: admin
-Password: admin123
-```
-
-
----
-
-### Optional: 
- - No need to show status: Open, Closed styles On modals. 
- - No Need to show icon on labels 
- - No need to apply styles on Priority 
---- 
-
-
-## 📤 What to submit
-
-- **GitHub Repository Link:**
-- **Live Site Link:**
-
----
+<!-- 5️⃣ What are template literals? -->
+It is a modern way of writing strings after comes ES6 update. It used backticks (` `) & by this, we can direct add variable data as a string with expressions and multi line text/strings. We can write variable data or expression by using ${}. And also we can call any function from the inside of ${}. It's most powerful method. It's very common to Dom manipulation, API data rendering. And by this, we can easily create html elements dynamically.
 
 
